@@ -1,16 +1,16 @@
-import React, {useRef, useState} from 'react';
+import React, {useState} from 'react';
 import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
+
+var timer = null;
 
 const App = () => {
   const [numCronometro, setNumCronometro] = useState(0);
   const [textBotao, setTextBotao] = useState('Iniciar');
 
-  let timer = null;
-
   const iniciarCronometro = () => {
     if (timer != null) {
       clearInterval(timer);
-      timer = null;
+      setTextBotao('Iniciar');
     } else {
       setTextBotao('Parar');
       timer = setInterval(() => {
@@ -22,9 +22,9 @@ const App = () => {
   const limparCronometro = () => {
     if (timer != null) {
       clearInterval(timer);
-      timer = null;
       setNumCronometro(0);
       setTextBotao('Iniciar');
+      timer = null;
     }
   };
 
